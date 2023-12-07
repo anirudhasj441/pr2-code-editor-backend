@@ -9,8 +9,8 @@ jobs:
         steps:
         - uses: actions/checkout@v3
         - name: rsync deployments
-        uses: burnett01/rsync-deployments@6.0.0
-        with:
+          uses: burnett01/rsync-deployments@6.0.0
+          with:
             switches: -avzP
             path: ./*
             remote_path: /home/devil/code-editor-backend

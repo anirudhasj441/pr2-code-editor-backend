@@ -1,5 +1,5 @@
 name: code-editor-backend-deploy CI
-ON:
+on:
     push:
         branches: ["master"]
 

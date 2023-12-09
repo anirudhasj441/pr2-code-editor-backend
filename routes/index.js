@@ -107,4 +107,16 @@ router.post('/get_file_content', (req, res) => {
     // console.log(fileBuffer);
     res.send({file_content: fileContent})
 })
+
+router.post('/save_file', (req, res) => {
+    let data = req.body;
+
+    let filePath = path.join(rootDir, data.path);
+    let fileContent = req.body.file_content;
+
+    fs.writeFileSync(filePath, fileContent);
+
+    res.send({status: 200})
+
+})
 module.exports = router;

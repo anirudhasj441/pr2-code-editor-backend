@@ -113,10 +113,21 @@ router.post('/save_file', (req, res) => {
 
     let filePath = path.join(rootDir, data.path);
     let fileContent = req.body.file_content;
-
+    if(!fs.existsSync(filePath)) {
+        res.send({status: 500});
+        return;
+    }
     fs.writeFileSync(filePath, fileContent);
 
     res.send({status: 200})
 
+})
+
+router.post('/delete_path', (req, res) => {
+    let data = req.body;
+
+    let dirPath = path.join(rootDir, data.path);
+    fs.rmSync(dirPath, {recursive: true, force: true});
+    res.send({status: 200})
 })
 module.exports = router;
